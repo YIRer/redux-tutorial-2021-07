@@ -1,4 +1,10 @@
 import React from "react";
+import CounterContainers from "./containers/CounterContainer";
+import TodosContainer from "./containers/TodosContainer";
+import PostListPage from "./pages/PostListPage";
+import PostPage from "./pages/PostPage";
+import { Switch, Route } from "react-router-dom";
+
 // import Users from "./Users";
 // import { UsersProvider } from "./UsersContext";
 // import { createGlobalStyle } from "styled-components";
@@ -16,5 +22,17 @@ import React from "react";
 // `;
 
 export default function App() {
-  return <div>hello!</div>;
+  return (
+    <div>
+      <CounterContainers />
+      <hr />
+      <Switch>
+        <Route path="/" component={PostListPage} exact />
+        <Route path="/:id" component={PostPage} />
+      </Switch>
+
+      <hr />
+      <TodosContainer />
+    </div>
+  );
 }
