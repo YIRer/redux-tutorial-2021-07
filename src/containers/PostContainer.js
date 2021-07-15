@@ -4,7 +4,14 @@ import Post from "../components/Post";
 import { getPost, goToHome } from "../modules/posts";
 
 export default function PostContainer({ postId }) {
-  const { data, loading, error } = useSelector((state) => state.posts.post);
+  const { data, loading, error } = useSelector(
+    (state) =>
+      state.posts.post[postId] || {
+        loading: false,
+        data: null,
+        error: null,
+      }
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
